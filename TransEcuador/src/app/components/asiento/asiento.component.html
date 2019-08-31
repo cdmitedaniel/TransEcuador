@@ -1,0 +1,54 @@
+<div class="container-fluid">
+  <h1>
+    {{horarioSeleccionado.horasalida}}
+  </h1>
+  <p> {{horarioSeleccionado.chofer}}</p>
+  <p> {{horarioSeleccionado.placa}}</p>
+  <p> {{usuariologeado.nombre}}</p>
+  <p> {{nroasientos}}</p>
+  <p>{{myDate}}</p>
+  <div class="row">
+    <div class="col-xs-6 col-md-4">
+      <p>Piso 1</p>
+        <img src="../../../assets/img/asientos2.jpg" alt="">
+    </div>
+    <div class="col-xs-6 col-md-4">
+        <p>Piso 2</p>
+        <img src="../../../assets/img/asientos2.jpg" alt="">
+    </div>
+  </div>
+    <p>Elegir asientos</p>
+    <form #validarForm="ngForm" (ngSubmit)="validarAsiento(validarForm)">
+      <div>
+          <div  role="alert" *ngIf="error1.length > 0">
+              <div>{{error1}}</div>           
+          </div>
+          <p>Asiento 1</p>  
+          <input #asiento1="ngModel" [(ngModel)]="asiento.asiento1" name="asiento1" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
+      </div>
+      <div *ngIf="nroasientos > 1">
+          <div  role="alert" *ngIf="error2.length > 0">
+              <div>{{error2}}</div>           
+          </div>
+          <p>Asiento 2</p>  
+          <input #asiento2="ngModel" [(ngModel)]="asiento.asiento2" name="asiento2" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
+      </div>
+      <div *ngIf="nroasientos > 2">
+          <div  role="alert" *ngIf="error3.length > 0">
+              <div>{{error3}}</div>           
+          </div>
+          <p>Asiento 3</p>  
+          <input #asiento3="ngModel" [(ngModel)]="asiento.asiento3" name="asiento3" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
+      </div>
+      <div *ngIf="nroasientos > 3">
+          <div  role="alert" *ngIf="error4.length > 0">
+              <div>{{error4}}</div>           
+          </div>
+          <p>Asiento 4</p>  
+          <input #asiento4="ngModel" [(ngModel)]="asiento.asiento4" name="asiento4" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
+      </div>
+        <button class="btn" style="margin-left: 2px">Validar asientos</button>
+      </form>
+
+      <button *ngIf="mostrar" (click)='finalizarreserva()'>FINALIZAR RESERVA</button>
+</div>

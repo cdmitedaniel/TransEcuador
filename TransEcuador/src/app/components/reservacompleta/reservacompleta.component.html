@@ -1,0 +1,21 @@
+<p>
+  reserva completada!
+</p>
+<div class="container-fluid">
+    <h1>
+      {{horarioSeleccionado.horasalida}}
+    </h1>
+    <p> {{horarioSeleccionado.chofer}}</p>
+    <p> {{horarioSeleccionado.placa}}</p>
+    <p> {{usuariologeado.nombre}}</p>
+    <p> {{nroasientos}}</p>
+    <p>{{myDate}}</p>
+    <p>{{asientoseleccionados.asiento1}}</p>
+    <p *ngIf="nroasientos > 1">{{asientoseleccionados.asiento2}}</p>
+    <p *ngIf="nroasientos > 2">{{asientoseleccionados.asiento3}}</p>
+    <p *ngIf="nroasientos > 3">{{asientoseleccionados.asiento4}}</p>
+
+
+  
+</div>
+
