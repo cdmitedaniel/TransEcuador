@@ -1,0 +1,180 @@
+<!-- Login y Register CSS -->
+<link rel="icon" type="image/x-icon" href="http://transportesecuador.com.ec/wp-content/uploads/2018/05/logo-big.png">
+
+<link rel="icon" type="image/png" href="assets/login/images/icons/favicon.ico" />
+
+<link rel="stylesheet" type="text/css" href="assets/login/vendor/bootstrap/css/bootstrap.min.css">
+
+<link rel="stylesheet" type="text/css" href="assets/login/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="assets/login/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+
+<link rel="stylesheet" type="text/css" href="assets/login/vendor/animate/animate.css">
+
+<link rel="stylesheet" type="text/css" href="assets/login/vendor/css-hamburgers/hamburgers.min.css">
+
+<link rel="stylesheet" type="text/css" href="assets/login/vendor/animsition/css/animsition.min.css">
+
+<link rel="stylesheet" type="text/css" href="assets/login/vendor/select2/select2.min.css">
+
+<link rel="stylesheet" type="text/css" href="assets/login/vendor/daterangepicker/daterangepicker.css">
+
+<link rel="stylesheet" type="text/css" href="assets/login/css/util.css">
+<link rel="stylesheet" type="text/css" href="assets/login/css/main.css">
+<!-- End Login y Register CSS -->
+
+<div class="limiter">
+  <div class="container-login100">
+    <div class="wrap-login100">
+      <div class="login100-form-title" style="background-image: url(assets/login/images/bg-01.jpg);">
+        <span class="login100-form-title-1" *ngIf="!isError">
+          Registro
+        </span>
+      </div>
+
+      <form class="login100-form validate-form" #formRegister="ngForm" (ngSubmit)="onRegister(formRegister)">
+        <!-- <h1 class="h3 mb-3 font-weight-normal">Registro</h1> -->
+        <div class="alert alert-danger" role="alert" *ngIf="isError">
+          {{msgError}}
+        </div>
+
+        <!--  name  -->
+        <div class="wrap-input100">
+          <span class="label-input100">Nombre</span>
+          <input type="text" #nombre="ngModel" name="nombre" class="input100" placeholder="Nombre"
+            [(ngModel)]="user.nombre" required minlength="3" maxlength="15">
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="nombre.touched && !nombre.valid">
+          <div *ngIf="nombre.errors.required">Escriba el Nombre Por Favor</div>
+          <div *ngIf="nombre.errors.minlength">Texto muy corto</div>
+          <span class="focus-input100"></span>
+        </div>
+        <!--  end name  -->
+
+        <!--  last name  -->
+        <div class="wrap-input100">
+          <span class="label-input100">Apellido</span>
+          <input type="text" #apellido="ngModel" name="apellido" class="input100" placeholder="Apellido"
+            [(ngModel)]="user.apellido" required minlength="3" maxlength="15">
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="apellido.touched && !apellido.valid">
+          <div *ngIf="apellido.errors.required">Escriba el Apellido Por Favor</div>
+          <div *ngIf="apellido.errors.minlength">Texto muy corto</div>
+          <span class="focus-input100"></span>
+        </div>
+        <!--  end last name  -->
+
+        <!--  mail  -->
+        <div class="wrap-input100">
+          <span class="label-input100">Correo</span>
+          <input type="email" #email="ngModel" name="email" class="input100" placeholder="Correo Electronico"
+            [(ngModel)]="user.email" required minlength="8">
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="email.touched && !email.valid">
+          <div *ngIf="email.errors.required">Escriba el Correo Por Favor</div>
+          <div *ngIf="email.errors.minlength">El correo debe tener más de 8 letras</div>
+          <span class="focus-input100"></span>
+        </div>
+        <!--  end mail  -->
+
+        <!--  password  -->
+        <div class="wrap-input100">
+          <span class="label-input100">Contraseña</span>
+          <input type="password" #password="ngModel" name="password" class="input100" placeholder="Contraseña"
+            [(ngModel)]="user.password" required minlength="5" maxlength="10">
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="password.touched && !password.valid">
+          <div *ngIf="password.errors.required">Escriba la Contraseña Por Favor</div>
+          <div *ngIf="password.errors.minlength">La contraseña debe tener más de 5 letras</div>
+          <span class="focus-input100"></span>
+        </div>
+        <!--  end password  -->
+
+        <!--  birth  -->
+        <div class="wrap-input100">
+          <span class="label-input100">Nacimiento</span>
+          <input type="text" #nacimiento="ngModel" name="nacimiento" class="input100" placeholder="Fecha de Nacimiento"
+            [(ngModel)]="user.nacimiento" required minlength="3" maxlength="15">
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="nacimiento.touched && !nacimiento.valid">
+          <div *ngIf="nacimiento.errors.required">Escriba su Fecha de Nacimiento Por Favor</div>
+          <div *ngIf="nacimiento.errors.minlength">Texto muy corto</div>
+          <span class="focus-input100"></span>
+        </div>
+        <!--  end birth  -->
+
+        <!--  address  -->
+        <div class="wrap-input100">
+          <span class="label-input100">Direccion</span>
+          <input type="text" #direccion="ngModel" name="direccion" class="input100" placeholder="Direccion"
+            [(ngModel)]="user.direccion" required minlength="3" maxlength="15">
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="direccion.touched && !direccion.valid">
+          <div *ngIf="direccion.errors.required">Escriba su Direccion Por Favor</div>
+          <div *ngIf="direccion.errors.minlength">Texto muy corto</div>
+          <span class="focus-input100"></span>
+        </div>
+        <!--  end address  -->
+
+        <!--  telephone  -->
+        <div class="wrap-input100">
+          <span class="label-input100">Telefono</span>
+          <input type="text" #telefono="ngModel" name="telefono" class="input100" placeholder="Telefono"
+            [(ngModel)]="user.telefono" required minlength="3" maxlength="15">
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="telefono.touched && !telefono.valid">
+          <div *ngIf="telefono.errors.required">Escriba su Telefono Por Favor</div>
+          <div *ngIf="telefono.errors.minlength">Texto muy corto</div>
+          <span class="focus-input100"></span>
+        </div>
+        <!--  end telephone  -->
+
+        <!--  CI  -->
+        <div class="wrap-input100">
+          <span class="label-input100">Cedula</span>
+          <input type="text" #cedula="ngModel" name="cedula" class="input100" placeholder="Cedula de Identidad"
+            [(ngModel)]="user.cedula" required minlength="3" maxlength="15">
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="cedula.touched && !cedula.valid">
+          <div *ngIf="cedula.errors.required">Escriba su Cedula Por Favor</div>
+          <div *ngIf="cedula.errors.minlength">Texto muy corto</div>
+          <span class="focus-input100"></span>
+        </div>
+        <!--  end CI  -->
+
+        <!--  city  -->
+        <div class="wrap-input100">
+          <span class="label-input100">Ciudad</span>
+          <input type="text" #ciudad="ngModel" name="ciudad" class="input100" placeholder="Ciudad"
+            [(ngModel)]="user.ciudad" required minlength="3" maxlength="15">
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="ciudad.touched && !ciudad.valid">
+          <div *ngIf="ciudad.errors.required">Escriba su Ciudad Por Favor</div>
+          <div *ngIf="ciudad.errors.minlength">Texto muy corto</div>
+          <span class="focus-input100"></span>
+        </div>
+        <!--  end city  -->
+
+        <!--  button  -->
+        <div class="container-login100-form-btn" style="margin: 30px">
+          <button type="submit" class="login100-form-btn" style="margin: 2px">Registrarse</button>
+          <button routerLink='/auth/login' class="login100-form-btn" style="margin: 2px">Iniciar Sesión</button>
+        </div>
+        <!--  end button  -->
+
+        <!--           <button type="submit" class="btn btn-lg btn-primary btn-block">Registrarse</button>
+          <a routerLink='/auth/login' class="form-control login-user">Iniciar Sesión</a> -->
+
+      </form>
+    </div>
+  </div>
+</div>
