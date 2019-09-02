@@ -32,6 +32,8 @@ app.use('/auth',require('./routes/auth.routes'));
 app.use('/ruta',require('./routes/ruta.routes'));
 app.use('/horario',require('./routes/horario.routes'));
 app.use('/asiento',require('./routes/asiento.routes'));
+app.use('/pago',require('./routes/pago.routes'));
+
 
 //Starting the server
 app.listen(app.get('port'), () => {

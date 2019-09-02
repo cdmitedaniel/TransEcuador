@@ -1,17 +1,14 @@
-<p>
-  ruta works!
-</p>
-<div>
-  <div class="col s12">
-      <div class="row">  
-  
-<div *ngFor="let ruta of rutaService.rutas" class="col s4">
-    <img width="300" alt="Angular Logo" src="../assets/img/transportehome.png">
-  <p>{{ ruta.ruta }}</p>
-  <a (click)="pasarRuta(ruta)" title=""><button>Reservar</button></a>
-</div>
-
-</div>
-</div>
-
+<div class="container-login100">
+    <div class="menuca"></div>
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let ruta of rutaService.rutas" class="col-xs-12 col-sm-4 col-md-4 mx-auto bloque">
+        <div class="wrap-login100">
+          <img class="imgBus" src="../assets/img/transportehome.png">
+          <p class="ruta">{{ ruta.ruta }}</p>
+          <a (click)="pasarRuta(ruta)" class="btnReservar">Reservar</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

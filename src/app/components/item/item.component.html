@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="row">
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          <form #loginForm="ngForm" (ngSubmit)="addLogin(loginForm)" >
+            <input type="hidden" name="_id" #_id="ngModel" 
+            [(ngModel)]="loginService.selectedLogin._id">
+            <div class="row">
+              <div class="input-field col-s12">
+                <input type="text" name="album" #name="ngModel" 
+                [(ngModel)]="loginService.selectedLogin.album"  placeholder="album"   required >
+              </div>
+              <div class="input-field col-s12">
+                <input type="text" name="ano" #name="ngModel" 
+                [(ngModel)]="loginService.selectedLogin.ano" value="0"  placeholder="ano"   required>
+              </div>
+              <div class="input-field col-s12">
+                <input type="text" name="cantidad" #name="ngModel" 
+                [(ngModel)]="loginService.selectedLogin.cantidad" value="0"  placeholder="cantidad"   required>
+              </div>
+              <div class="input-field col-s12">
+                <input type="text" name="precio" #name="ngModel" 
+                [(ngModel)]="loginService.selectedLogin.precio" value="0"  placeholder="precio"   required>
+              </div>
+              <div class="input-field col-s12">
+                <input type="text" name="artista" #name="ngModel" 
+                [(ngModel)]="loginService.selectedLogin.artista"  placeholder="artista"   required >
+              </div>
+              <div class="card-action">
+                <div class="input-field col-s12">
+                  <button class="btn right  purple darken-4" (click)="resetForm(loginForm)">Limpiar</button>
+                  <button class="btn ">Guardar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col s7">
+      <table class="striped highlight black-text">
+        <thead>
+          <th>Album</th>
+          <th>Ano</th>
+          <th>Cantidad</th>
+          <th>Precio</th>
+          <th>Artista</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let login of loginService.logins">
+            <td>{{ login.album }}</td>
+            <td>{{ login.ano }}</td>
+            <td>{{ login.cantidad }}</td>
+            <td>{{ login.precio }}</td>
+            <td>{{ login.artista }}</td>
+            <td>
+              <a (click)="editLogin(login)">
+                <i class="material-icons">edit</i>
+              </a>
+              <a (click)="deleteLogin(login._id, loginForm)">
+                <i class="material-icons">delete</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

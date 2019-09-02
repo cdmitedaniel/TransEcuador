@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ReservacompletaComponent } from './components/reservacompleta/reservacompleta.component';
 import { AcercadeComponent } from './components/acercade/acercade.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { ReservafinalizadaComponent } from './components/reservafinalizada/reservafinalizada.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { AcercadeComponent } from './components/acercade/acercade.component';
     LoginComponent,
     RegisterComponent,
     ReservacompletaComponent,
-    AcercadeComponent
+    AcercadeComponent,
+    InicioComponent,
+    ReservafinalizadaComponent
   ],
   imports: [
     BrowserModule,

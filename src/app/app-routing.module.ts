@@ -8,6 +8,9 @@ import { AsientoComponent } from './components/asiento/asiento.component';
 import { RegisterComponent } from './components/auth/register/register.component';
 import { ReservacompletaComponent } from './components/reservacompleta/reservacompleta.component';
 import { AcercadeComponent } from './components/acercade/acercade.component';
+import { InicioComponent } from './components/inicio/inicio.component';
+import { ReservafinalizadaComponent } from './components/reservafinalizada/reservafinalizada.component';
+
 
 
 
@@ -19,7 +22,10 @@ const routes: Routes = [
   {path: 'asiento', component: AsientoComponent},
   {path: 'user', component: UserComponent},
   {path: 'reservacompleta', component: ReservacompletaComponent},
-  {path: 'acercade', component: AcercadeComponent}
+  {path: 'acercade', component: AcercadeComponent},
+  {path: 'reservafinalizada', component: ReservafinalizadaComponent},
+
+  {path: '', component: InicioComponent}
 
 ];
 

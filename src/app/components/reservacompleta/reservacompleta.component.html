@@ -1,21 +1,48 @@
-<p>
-  reserva completada!
-</p>
-<div class="container-fluid">
-    <h1>
-      {{horarioSeleccionado.horasalida}}
-    </h1>
-    <p> {{horarioSeleccionado.chofer}}</p>
-    <p> {{horarioSeleccionado.placa}}</p>
-    <p> {{usuariologeado.nombre}}</p>
-    <p> {{nroasientos}}</p>
-    <p>{{myDate}}</p>
-    <p>{{asientoseleccionados.asiento1}}</p>
-    <p *ngIf="nroasientos > 1">{{asientoseleccionados.asiento2}}</p>
-    <p *ngIf="nroasientos > 2">{{asientoseleccionados.asiento3}}</p>
-    <p *ngIf="nroasientos > 3">{{asientoseleccionados.asiento4}}</p>
+<div class="limiter">
+    <div class="menuca"></div>
+  <div class="container-login100">
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-12 col-md-12 mx-auto datos">
+        <h1>
+          ¡Sólo 1 paso más para finalizar la reserva!
+        </h1>
+      </div>
 
+      <div class="col-xs-6 col-sm-6 col-md-6 mx-auto wrap-login100">
+        <h2>Datos viaje</h2>
+        <h3>{{horarioSeleccionado.horasalida}}</h3>
+        <p>{{myDate}}</p>
+        <p> {{horarioSeleccionado.chofer}}</p>
+        <p> {{horarioSeleccionado.placa}}</p>
+        <p> {{nroasientos}} asientos</p>
+        <p>Asiento 1: {{asientoseleccionados.asiento1}}</p>
 
-  
+        <p *ngIf="nroasientos > 1">Asiento 2: {{asientoseleccionados.asiento2}}</p>
+        <p *ngIf="nroasientos > 2">Asiento 3: {{asientoseleccionados.asiento3}}</p>
+        <p *ngIf="nroasientos > 3">Asiento 4: {{asientoseleccionados.asiento4}}</p>
+        <p> Total a Cancelar: {{total}}</p>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-6 mx-auto wrap-login100">
+        <h2>Datos cliente</h2>
+        <p>Sr(a). {{usuariologeado.nombre}} {{usuariologeado.apellido}}</p>
+        <p>DNI: {{usuariologeado.cedula}}</p>
+        <p>Teléfono: {{usuariologeado.cedula}}</p>
+        <p>Correo: {{usuariologeado.email}}</p>
+        <form #pagosForm="ngForm" (ngSubmit)="pasarPago(pagosForm)">
+          <select class="lista" name="nombretarjeta" required #nombretarjeta="ngModel" ng-model="nombretarjeta" [(ngModel)]="pago.nombretarjeta">
+            <option value="" disabled selected >nombre tarjeta</option>
+            <option value="visa" ng-selected="true">visa</option>
+            <option value="mastercard">mastrcard</option>
+            <option value="dinners">dinners</option>
+            <option value="intenacional">internacional</option>
+          </select><br>
+            <span class="label-input100">numero de tarjeta</span>
+            <input name="numerotarjeta" required #numerotarjeta="ngModel" ng-model="numerotarjeta" [(ngModel)]="pago.numerotarjeta">
+          
+          <button class="btnReservar">FINALIZAR</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 

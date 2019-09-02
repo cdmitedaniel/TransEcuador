@@ -1,3 +1,97 @@
-<p>
-  user works!
-</p>
+<div class="limiter">
+  <div class="menuca"></div>
+  <div class="container">
+    <div class="row">
+      <div class="col s5">
+        <div class="card">
+          <div class="card-content">
+            <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="userService.selectedUser._id">
+              <div class="row">
+                <div class="input-field col-s12">
+                  <input type="text" name="nombre" #name="ngModel" [(ngModel)]="userService.selectedUser.nombre"
+                    placeholder="nombre" required>
+                </div>
+                <div class="input-field col-s12">
+                  <input type="text" name="apellido" #name="ngModel" [(ngModel)]="userService.selectedUser.apellido"
+                    placeholder="apellido" required>
+                </div>
+                <div class="input-field col-s12">
+                  <input type="text" name="nacimiento" #name="ngModel" [(ngModel)]="userService.selectedUser.nacimiento"
+                    placeholder="nacimiento" required>
+                </div>
+                <div class="input-field col-s12">
+                  <input type="text" name="email" #name="ngModel" [(ngModel)]="userService.selectedUser.email"
+                    placeholder="email" required>
+                </div>
+                <div class="input-field col-s12">
+                  <input type="text" name="password" #name="ngModel" [(ngModel)]="userService.selectedUser.password"
+                    placeholder="password" required>
+                </div>
+                <div class="input-field col-s12">
+                  <input type="text" name="direccion" #name="ngModel" [(ngModel)]="userService.selectedUser.direccion"
+                    placeholder="direccion" required>
+                </div>
+                <div class="input-field col-s12">
+                  <input type="text" name="telefono" #name="ngModel" [(ngModel)]="userService.selectedUser.telefono"
+                    placeholder="telefono" required>
+                </div>
+                <div class="input-field col-s12">
+                  <input type="text" name="cedula" #name="ngModel" [(ngModel)]="userService.selectedUser.cedula"
+                    placeholder="cedula" required>
+                </div>
+                <div class="input-field col-s12">
+                  <input type="text" name="ciudad" #name="ngModel" [(ngModel)]="userService.selectedUser.ciudad"
+                    placeholder="ciudad" required>
+                </div>
+                <div class="card-action">
+                  <div class="input-field col-s12">
+                    <button class="btn right  purple darken-4" (click)="resetForm(userForm)">Limpiar</button>
+                    <button class="btn ">Guardar</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col s7">
+        <table class="striped highlight black-text">
+          <thead>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>nacimiento</th>
+            <th>email</th>
+            <th>password</th>
+            <th>direccion</th>
+            <th>telefono</th>
+            <th>cedula</th>
+            <th>ciudad</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of userService.users">
+              <td>{{ user.nombre }}</td>
+              <td>{{ user.apellido }}</td>
+              <td>{{ user.nacimiento }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.password }}</td>
+              <td>{{ user.direccion }}</td>
+              <td>{{ user.telefono }}</td>
+              <td>{{ user.cedula }}</td>
+              <td>{{ user.ciudad }}</td>
+              <td>
+                <a (click)="editUser(user)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a (click)="deleteUser(user._id, userForm)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>

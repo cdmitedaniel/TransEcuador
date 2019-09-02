@@ -1,0 +1,29 @@
+.limiter {
+    width: 100%;
+    margin: 0 auto;
+    align-content: center
+  }
+  
+.container-login100 {
+  width: 100%;  
+  min-height: 95vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background: #ebeeef;
+}  
+.datos{
+    text-align: center;
+    background: whitesmoke;
+    margin: 50px 10px;
+    border-radius: 10px;
+    padding: 30px;
+    font-size: 30px;
+
+}

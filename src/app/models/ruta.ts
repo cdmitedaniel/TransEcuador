@@ -1,5 +1,5 @@
 export class Ruta {
-    constructor(_id = '', ruta = '', costopiso1 = '', costopiso2 = ''){
+    constructor(_id = '', ruta = '', costopiso1 = 0, costopiso2 = 0){
         this._id = _id;
         this.ruta = ruta;
         this.costopiso1 = costopiso1;
@@ -8,7 +8,7 @@ export class Ruta {
 
     _id: string;
     ruta:string;
-    costopiso1:string;
-    costopiso2: string;
+    costopiso1:number;
+    costopiso2: number;
 
 }

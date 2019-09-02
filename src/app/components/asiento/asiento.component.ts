@@ -32,10 +32,14 @@ export class AsientoComponent implements OnInit {
   public validar4 = true;
   public myDate ='';
   public mostrar=false;
+  public filtro : Number[];
 
   private asiento: Asiento;
+
   ngOnInit() {
+    this.filtro=[];
     this.usuariologeado=JSON.parse(localStorage.getItem("currentUser"));
+    this.filṭ̣roasiento();
     if(this.usuariologeado!=undefined){
       this.horarioSeleccionado=JSON.parse(localStorage.getItem("selectedhorario"));
     
@@ -55,8 +59,37 @@ export class AsientoComponent implements OnInit {
       this.router.navigate(['/auth/login']);
 
     }
-    
+
   }
+  filṭ̣roasiento(){
+    this.asientoService.getAsientos()
+    .subscribe((res: Asiento[]) => {
+      this.asientoService.asientos = res as Asiento[];
+      this.asientoService.asientos.forEach(element => {
+        if(element.horario==this.horarioSeleccionado._id){
+          console.log("dnkwdwkdn");
+
+          if(this.myDate==element.dia){
+           
+            if(element.asiento1!=0){
+              this.filtro.push(element.asiento1);
+            }
+            if(element.asiento2!=0){
+              this.filtro.push(element.asiento2);
+            }
+            if(element.asiento3!=0){
+              this.filtro.push(element.asiento3);
+            }
+            if(element.asiento4!=0){
+              this.filtro.push(element.asiento4);
+            }
+          }
+        }
+        
+      });
+    });
+  }
+
   arrayOne(n: number): any[] {
     return Array(n);
   }
@@ -288,15 +321,9 @@ export class AsientoComponent implements OnInit {
       //SE GUARDA
       this.asientoService.postAsiento(this.asiento)
         .subscribe(asiento => {
-          localStorage.setItem('hola',JSON.stringify(this.asiento));
+          localStorage.setItem('selectedasiento',JSON.stringify(this.asiento));
 
-          this.router.navigate(['/reservacompleta']);
-
-
-
-
-
-          
+          this.router.navigate(['/reservacompleta']);  
         });
     }else{
 

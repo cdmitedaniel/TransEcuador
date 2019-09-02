@@ -7,7 +7,7 @@ import { UserComponent } from '../components/user/user.component';
 @Injectable({
   providedIn: 'root'
 })
-export class RutaService {
+export class UserService {
   
     selectedUser: User;
     users: User[];

@@ -1,27 +1,44 @@
-<h1>{{ rutaSeleccionada.ruta }}</h1>
-<p>Costo piso 1: ${{ rutaSeleccionada.costopiso1 }}</p>
-<p>Costo piso 2: ${{ rutaSeleccionada.costopiso2 }}</p>
-<div>
-  <div class="row"> 
-    <div *ngFor="let horario of horarioService.horarios" class="col-md-4">
-        <img width="300" alt="Angular Logo" src="../assets/img/transportehome.png">
-      <p>{{ horario.horasalida }}</p>
-      <p>{{ horario.chofer }}</p>
-      <p>{{ horario.placa }}</p>
-      <form #asientosForm="ngForm" (ngSubmit)="pasarHorario(asientosForm,horario)">
-
-        <select name="nroasientos" required ngModel #nroasientos="ngModel" ng-model="nroasientos">
-          <option value="" disabled selected >Número de asiento</option>
-          <option value="1" ng-selected="true">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-        </select>
-        <button class="btn" style="margin-left: 2px">Elegir asientos</button>
-        <div  role="alert" *ngIf="error1.length > 0">
-            <div>{{error1}}</div>           
+<div class="limiter">
+    <div class="menuca"></div>
+  <div class="container-login100">
+    <div class="row"> 
+      <div class="col-xs-12 col-sm-12 col-md-12 mx-auto datos">
+        <h1>{{ rutaSeleccionada.ruta }}</h1>
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 col-md-6 mx-auto">
+            <p>Costo piso 1: ${{ rutaSeleccionada.costopiso1 }}</p>
+          </div>
+          <div class="col-xs-6 col-sm-6 col-md-6 mx-auto">
+            <p>Costo piso 2: ${{ rutaSeleccionada.costopiso2 }}</p>
+          </div>
         </div>
-      </form>
+      </div>
+      <div *ngFor="let horario of horarioService.horarios" class="wrap-login100 col-xs-12 col-sm-12 col-md-12">
+        <div class="row">
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <p class="hora">{{ horario.horasalida }}</p>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <p class="chofer">{{ horario.chofer }}</p>
+            <p class="placa">{{ horario.placa }}</p>
+          </div>
+          <div class="col-xs-4 col-sm-4 col-md-4">
+            <form #asientosForm="ngForm" (ngSubmit)="pasarHorario(asientosForm,horario)">
+              <select class="lista" name="nroasientos" required ngModel #nroasientos="ngModel" ng-model="nroasientos">
+                <option value="" disabled selected >Número de asiento</option>
+                <option value="1" ng-selected="true">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select><br>
+              <button class="btnReservar">Elegir asientos</button>
+              <div  role="alert" *ngIf="error1.length > 0">
+                  <div>{{error1}}</div>           
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

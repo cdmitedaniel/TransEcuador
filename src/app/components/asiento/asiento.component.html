@@ -1,54 +1,74 @@
-<div class="container-fluid">
-  <h1>
-    {{horarioSeleccionado.horasalida}}
-  </h1>
-  <p> {{horarioSeleccionado.chofer}}</p>
-  <p> {{horarioSeleccionado.placa}}</p>
-  <p> {{usuariologeado.nombre}}</p>
-  <p> {{nroasientos}}</p>
-  <p>{{myDate}}</p>
-  <div class="row">
-    <div class="col-xs-6 col-md-4">
-      <p>Piso 1</p>
-        <img src="../../../assets/img/asientos2.jpg" alt="">
-    </div>
-    <div class="col-xs-6 col-md-4">
-        <p>Piso 2</p>
-        <img src="../../../assets/img/asientos2.jpg" alt="">
+<div class="limiter">
+  <div class="container-login100">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 mx-auto datos">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 mx-auto">
+              <h1>{{horarioSeleccionado.horasalida}}</h1>
+              <p>{{myDate}}</p>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 mx-auto">
+              <p> {{horarioSeleccionado.chofer}}</p>
+              <p> {{horarioSeleccionado.placa}}</p>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 mx-auto">
+              <p> Sr(a). {{usuariologeado.nombre}} {{usuariologeado.apellido}}</p>
+              <p> {{nroasientos}} asientos</p>
+            </div>
+          </div>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 mx-auto datos">
+        Asientos ocupados:
+        <div class="row">
+          <div *ngFor="let asiento of filtro" class="col-xs-2 col-sm-2 col-md-2">
+            <p class="ocupados">{{ asiento }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-4 col-md-4">
+        <p>Piso 1</p>
+          <img src="../../../assets/img/asientos2.jpg" alt="">
+      </div>
+      <div class="col-xs-4 col-md-4">
+          <p>Piso 2</p>
+          <img src="../../../assets/img/asientos2.jpg" alt="">
+      </div>
+    
+      <div class="col-xs-4 col-md-4">
+        <h4>Elegir asientos</h4>
+        <form #validarForm="ngForm" (ngSubmit)="validarAsiento(validarForm)">
+          <div>
+            <p>Asiento 1</p>  
+            <input #asiento1="ngModel" [(ngModel)]="asiento.asiento1" name="asiento1" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
+            <div  role="alert" *ngIf="error1.length > 0">
+                <div class="error">* {{error1}}</div>           
+            </div>
+          </div>
+          <div *ngIf="nroasientos > 1">
+            <p>Asiento 2</p>  
+            <input #asiento2="ngModel" [(ngModel)]="asiento.asiento2" name="asiento2" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
+            <div  role="alert" *ngIf="error2.length > 0">
+                <div class="error">* {{error2}}</div>           
+            </div>
+          </div>
+          <div *ngIf="nroasientos > 2">
+            <p>Asiento 3</p>  
+            <input #asiento3="ngModel" [(ngModel)]="asiento.asiento3" name="asiento3" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
+            <div  role="alert" *ngIf="error3.length > 0">
+                <div class="error">* {{error3}}</div>           
+            </div>
+          </div>
+          <div *ngIf="nroasientos > 3">
+            <p>Asiento 4</p>
+            <input #asiento4="ngModel" [(ngModel)]="asiento.asiento4" name="asiento4" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
+            <div role="alert" *ngIf="error4.length > 0">
+              <div class="error">* {{error4}}</div>           
+            </div>
+          </div>
+            <button class="btnFinalizar">Validar</button>
+        </form>
+        <button *ngIf="mostrar" (click)='finalizarreserva()' class="btnReservar">RESERVAR</button>
+      </div>
     </div>
   </div>
-    <p>Elegir asientos</p>
-    <form #validarForm="ngForm" (ngSubmit)="validarAsiento(validarForm)">
-      <div>
-          <div  role="alert" *ngIf="error1.length > 0">
-              <div>{{error1}}</div>           
-          </div>
-          <p>Asiento 1</p>  
-          <input #asiento1="ngModel" [(ngModel)]="asiento.asiento1" name="asiento1" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
-      </div>
-      <div *ngIf="nroasientos > 1">
-          <div  role="alert" *ngIf="error2.length > 0">
-              <div>{{error2}}</div>           
-          </div>
-          <p>Asiento 2</p>  
-          <input #asiento2="ngModel" [(ngModel)]="asiento.asiento2" name="asiento2" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
-      </div>
-      <div *ngIf="nroasientos > 2">
-          <div  role="alert" *ngIf="error3.length > 0">
-              <div>{{error3}}</div>           
-          </div>
-          <p>Asiento 3</p>  
-          <input #asiento3="ngModel" [(ngModel)]="asiento.asiento3" name="asiento3" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
-      </div>
-      <div *ngIf="nroasientos > 3">
-          <div  role="alert" *ngIf="error4.length > 0">
-              <div>{{error4}}</div>           
-          </div>
-          <p>Asiento 4</p>  
-          <input #asiento4="ngModel" [(ngModel)]="asiento.asiento4" name="asiento4" class="form-control" type="number" placeholder="1-75" minlength="1" min="1" max="75" maxlength="2">
-      </div>
-        <button class="btn" style="margin-left: 2px">Validar asientos</button>
-      </form>
-
-      <button *ngIf="mostrar" (click)='finalizarreserva()'>FINALIZAR RESERVA</button>
 </div>

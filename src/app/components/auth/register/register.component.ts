@@ -36,7 +36,7 @@ export class RegisterComponent implements OnInit {
       this.authService
         .registerUser(this.user)
         .subscribe(user => {
-          this.authService.setUserLoggedIn(this.user);
+          localStorage.setItem('currentUser', JSON.stringify(user));
           this.router.navigate(['/ruta']);
           location.reload();
         },
