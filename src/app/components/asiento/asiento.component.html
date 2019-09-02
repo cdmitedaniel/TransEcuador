@@ -66,9 +66,40 @@
             </div>
           </div>
             <button class="btnFinalizar">Validar</button>
+
+            <tbody>
+                <tr *ngFor="let asiento of asientoService.asiento">
+                    
+                    <td>{{asiento.horario}}</td>
+                    <td>{{asiento.usuario}}</td>
+                    <td>{{asiento.asiento1}}</td>
+                    <td>{{asiento.asiento2}}</td>
+                    <td>{{asiento.asiento3}}</td>
+                    <td>{{asiento.asiento4}}</td>
+                    <td>{{asiento.dia}}</td>
+                   
+                    <td>
+                        <a (click)="editAsiento(asiento)">
+                                <a class="btn-floating btn-large cyan pulse">
+                                    <i class="material-icons">edit</i></a>
+                           
+                        </a>
+                        <a (click)="deleteAsiento(Asiento._id)">
+                                <a class="btn-floating btn-large cyan pulse">
+                                        <i class="material-icons">delete</i></a>
+                           
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+
         </form>
         <button *ngIf="mostrar" (click)='finalizarreserva()' class="btnReservar">RESERVAR</button>
       </div>
+      
     </div>
+
+    
+
   </div>
 </div>

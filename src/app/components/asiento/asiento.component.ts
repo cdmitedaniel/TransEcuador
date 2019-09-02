@@ -9,6 +9,7 @@ import {formatDate} from '@angular/common';
 import { Router } from '@angular/router';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { isUndefined } from 'util';
+declare var M: any;
 
 @Component({
   selector: 'app-asiento',
@@ -316,6 +317,28 @@ export class AsientoComponent implements OnInit {
     this.mostrar=true;
 
   }
+  getAsiento() {
+    this.asientoService.getAsientos()
+    .subscribe(res => {
+    this.asientoService.asientos = res as Asiento[];
+    });
+    }
+
+    editAsiento(asiento: Asiento) {
+    this.asientoService.selectedAsiento = asiento;
+    }
+
+    deleteAsiento(_id: string, form: NgForm){
+    if(confirm('Esta seguro de querer eliminar?')){
+    this.asientoService.deleteAsiento(_id)
+    .subscribe(res => {
+    this.getAsiento();
+    //this.resetForm(form);
+    M.toast({html: 'Eliminado Satisfactoriamente'});
+    });
+    }
+    }
+
   finalizarreserva(){
     if(this.validar1 && this.validar2 && this.validar3 && this.validar4){
       //SE GUARDA

@@ -10,6 +10,9 @@ import { ReservacompletaComponent } from './components/reservacompleta/reservaco
 import { AcercadeComponent } from './components/acercade/acercade.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { ReservafinalizadaComponent } from './components/reservafinalizada/reservafinalizada.component';
+import { AdminrutaComponent } from './components/adminruta/adminruta.component';
+import { HorariosComponent } from './components/horarios/horarios.component';
+import { PagoComponent } from './components/crudpago/crudpago.component';
 
 
 
@@ -24,6 +27,9 @@ const routes: Routes = [
   {path: 'reservacompleta', component: ReservacompletaComponent},
   {path: 'acercade', component: AcercadeComponent},
   {path: 'reservafinalizada', component: ReservafinalizadaComponent},
+  {path: 'adminruta', component: AdminrutaComponent},
+  {path: 'horarios', component: HorariosComponent},
+  {path: 'pago', component: PagoComponent},
 
   {path: '', component: InicioComponent}
 

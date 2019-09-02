@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row">
+      <div class="col s5">
+          <div class="card">
+              <div class="card-content">
+                  <form #horarioForm="ngForm" (ngSubmit)="addHorario
+                  (horarioForm)">
+                  <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]
+                  ="horarioService.selectedHorario._id">
+                   <div class="row">
+                      <div class="input-field col s12">
+                         <input type="text" name="ruta" #ruta="ngModel" 
+                         [(ngModel)]="horarioService.selectedHorario.ruta"
+                         placeholder="Ingrese la ruta" >
+                      </div>
+                      <div class="input-field col s12">
+                          <input type="text" name="horasalida" #horasalida="ngModel" 
+                          [(ngModel)]="horarioService.selectedHorario.horasalida"
+                          placeholder="Ingrese su horario de salida" >
+                       </div>
+                       <div class="input-field col s12">
+                          <input type="text" name="chofer" #chofer="ngModel" 
+                          [(ngModel)]="horarioService.selectedHorario.chofer"
+                          placeholder="Ingrese nombre del chofer" >
+                       </div>
+                       <div class="input-field col s12">
+                          <input type="text" name="placa" #placa="ngModel" 
+                          [(ngModel)]="horarioService.selectedHorario.placa"
+                          placeholder="Ingrese la placa" >
+                       </div>
+                       
+                       
+                       <div class="card-action">
+                           <div class="input-field col s12">
+                              <button class="btn right">Save</button>
+                               <button class="btn" style="margin-right:5px; " (click)="resetForm(horarioForm)">Clean</button>
+                               
+                           </div>
+                       </div>
+                   </div>
+                  </form>
+              </div>
+          </div >
+          
+      </div>
+      <div class="col s7">
+          <table>
+              <thead>
+                  <!-- <th>Id</th> -->
+                  <th>Ruta</th>
+                  <th>Hora salida</th>
+                  <th>Chofer</th>
+                  <th>Placa</th>
+                 
+                  
+              </thead>
+              <tbody>
+                  <tr *ngFor="let horario of horarioService.horarios">
+                      <!-- <td>{{employee._id}}</td> -->
+                      <td>{{horario.ruta}}</td>
+                      <td>{{horario.horasalida}}</td>
+                      <td>{{horario.chofer}}</td>
+                      <td>{{horario.placa}}</td>
+                     
+                      <td>
+                          <a (click)="editHorario(horario)">
+                                  <a class="btn-floating btn-large cyan pulse">
+                                      <i class="material-icons">edit</i></a>
+                             
+                          </a>
+                          <a (click)="deleteHorario(horario._id)">
+                                  <a class="btn-floating btn-large cyan pulse">
+                                          <i class="material-icons">delete</i></a>
+                             
+                          </a>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+      <div class="col s5">
+        <div class="card">
+          <div class="card-content">
+            <form #pagoForm="ngForm" (ngSubmit)="addPago(pagoForm)">
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="pagoService.selectedPago._id">
+              <div class="row">
+                <div class="input-field col-s12">
+                  <input type="text" name="user" #user="ngModel" [(ngModel)]="pagoService.selectedPago.user" placeholder="Enter your usuario">
+                </div>
+                <div class="input-field col-s12">
+                  <input type="text" name="nombretarjeta" #nombretarjeta="ngModel" [(ngModel)]="pagoService.selectedPago.nombretarjeta" placeholder="Enter your nombretarjeta">
+                </div>
+                <div class="input-field col-s12">
+                  <input type="text" name="numerotarjeta" #numerotarjeta="ngModel" [(ngModel)]="pagoService.selectedPago.numerotarjeta" placeholder="Enter your numeriotarjeta">
+                </div>
+                
+                <div class="card-action">
+                  <div class="input-field col-s12">
+                    <button class="btn right" style="margin-left: 2px;" (click)="resetForm(pagoForm)">Clean</button>
+                    <button class="btn right">Save</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col s7">
+        <table class="striped highlight black-text">
+          <thead>
+            <th>usuario</th>
+            <th>nombretarjeta</th>
+            <th>numerotarjeta</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pago of pagoService.pagos">
+              <td>{{ pago.user }}</td>
+              <td>{{ pago.nombretarjeta }}</td>
+              <td>{{ pago.numerotarjeta }}</td>
+              <td>
+                <a (click)="editPago(pago)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a (click)="deletePago(pago._id, pagoForm)">
+                  <i class="material-icons">delete</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

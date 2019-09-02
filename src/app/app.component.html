@@ -28,18 +28,23 @@
         <div class="container">
           <a class="navbar-brand" href="#">Transporte Ecuador<span>.</span></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="oi oi-menu"></span> Menu
           </button>
   
-          <div class="collapse navbar-collapse" id="ftco-nav">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item active"><a routerLink="/auth/login" class="nav-link">Inicio</a></li>
-              <li class="nav-item"><a routerLink="/ruta" class="nav-link">Rutas</a></li>
-              <li class="nav-item"><a routerLink="/acercade" class="nav-link">Acerca de</a></li>
-              <li class="nav-item"><a *ngIf="userLogueado==undefined"  routerLink="/auth/login" class="nav-link">Iniciar Sesión</a></li>
-              <li class="nav-item"><a *ngIf="userLogueado!=undefined" (click)="cerrarsesion()" class="nav-link">Cerrar Sesión</a></li>
+          <div  id="ftco-nav">
+            
+              <a routerLink="/auth/login" class="nav-link">Inicio</a>
+              <a routerLink="/ruta" class="nav-link">Rutas</a>
+              <a routerLink="/user" class="nav-link">Menu User</a>
+              <a routerLink="/adminruta" class="nav-link">Menu Ruta</a>
+             <a routerLink="/horarios" class="nav-link">Menu Horarios</a>
+             <a routerLink="/asiento" class="nav-link">Menu Asientos</a>
+             <a routerLink="/pago" class="nav-link">Menu Pago</a>
+
+             <a routerLink="/acercade" class="nav-link">Acerca de</a>
+             <a *ngIf="userLogueado==undefined"  routerLink="/auth/login" class="nav-link">Iniciar Sesión</a>
+              <a *ngIf="userLogueado!=undefined" (click)="cerrarsesion()" class="nav-link">Cerrar Sesión</a>
               <p *ngIf="userLogueado!=undefined">Bienvenida, {{userLogueado.nombre}}</p>
-            </ul>
+
           </div>
         </div>
       </nav>
